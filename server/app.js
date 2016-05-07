@@ -2,51 +2,43 @@ var cluster = require('cluster');
 var keystone = require('keystone');
 
 // pull config object based on NODE_ENV environment variable
-var config = require('./config')[process.env.NODE_ENV];
+var config = require('./config');
 
 keystone.init({
   'admin path': 'admin',
   'auth': true,
   'auto update': true,
-  'brand': 'New Line Properties',
-  'emails': 'templates/emails',
-  'favicon': 'client/public/favicon.ico',
+  'brand': process.env.BRAND || 'BRAND',
+  'favicon': 'public/favicon.ico',
   'mongo': process.env.MONGOLAB_URI,
-  'name': 'New Line Properties',
+  'name': process.env.PROJECT_NAME || 'PROJECT_NAME',
   'port': process.env.PORT || 5000,
   'session store': 'connect-mongo',
   'session': true,
-  'static': ['public', '/app/client/public'],
+  'static': ['public'],
   'user model': 'User',
   'view engine': 'jade',
   'views': 'templates/views'
 });
 
-keystone.set('app config', config);
-
 keystone.import('models');
 
-keystone.set('locals', {
-  _: require('underscore'),
-  env: keystone.get('env'),
-  utils: keystone.utils,
-  editable: keystone.content.editable
+keystone.set({
+  'app config': config,
+  'google api key': process.env.GOOGLE_BROWSER_API_KEY || undefined,
+  'google server api key': process.env.GOOGLE_SERVER_API_KEY || undefined,
+  'locals': {
+    _: require('lodash'),
+    env: keystone.get('env'),
+    utils: keystone.utils,
+    editable: keystone.content.editable
+  },
+  'nav': {
+    'inquiries': 'inquiries',
+    'users': ['users']
+  },
+  'routes': require('./routes'),
 });
-
-keystone.set('routes', require('./routes'));
-keystone.set('homepage gallery', 'homepage-portfolio');
-
-keystone.set('nav', {
-  'inquiries': 'inquiries',
-  'users': ['users'],
-  'listings': ['suites', 'properties', 'regions'],
-  'tenets': ['tenets', 'work-orders'],
-  'media': 'galleries'
-});
-
-keystone.set('google api key', process.env.GOOGLE_BROWSER_API_KEY);
-keystone.set('google server api key', process.env.GOOGLE_SERVER_API_KEY);
-
 
 function startApp() {
   keystone.start({

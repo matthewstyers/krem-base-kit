@@ -8,9 +8,8 @@ var livereload = require('gulp-livereload');
 var nodemon = require('gulp-nodemon');
 var path = require('path');
 var plumber = require('gulp-plumber');
-var rename = require('gulp-rename');
 
-var config = require(path.resolve('./config'))[process.env.NODE_ENV];
+var config = require(path.resolve('./config'));
 // single reference point for all relevant paths.
 /*
 NOTE: Use paths to limit the number of files being watched by any single stream.
@@ -23,12 +22,7 @@ var paths = {
   'keystone': './keystone/**/*',
   'package': './package.json',
   'src': ['models/**/*.js', 'routes/**/*.js', 'app.js', 'package.json'],
-  'static': './templates/**/*.jade',
-  'style': {
-    sass: './public/styles/**/*.scss',
-    compiled: './public/dist/site.min.css',
-    dist: './public/dist/'
-  }
+  'static': './templates/**/*.jade'
 };
 
 // any child processes that need to be run (particularly within nodemon) that
@@ -38,7 +32,6 @@ var subProcess = {
   watch: function() {
     console.log('Gulp is now watching static files.');
     process.stdout.setMaxListeners(Infinity);
-    // watch sass and run compile taskdock on change
     // watch static file dirs (templates, images, etc.) and do a simple page
     //reload on change
     gulp.watch(paths.static, ['reload']);
@@ -47,7 +40,6 @@ var subProcess = {
 
 // checks the node_modules dir for differences from the current package.json
 // and runs an npm install when differences are found
-/* TODO: figure out some way to set the loglevel. It's super chatty.*/
 gulp.task('install', function() {
   gulp.src(paths.package)
     .pipe(plumber())
@@ -79,23 +71,8 @@ gulp.task('lint', function() {
 });
 
 // simple page refresh
-gulp.task('reload', function(cb) {
-  livereload.reload();
-  cb();
-});
-
-// compiles jade files in the templates directory and dumps html to tmp.
-gulp.task('renderJade', function() {
-  if (config.gulp.dumpHtml) {
-    console.log('dumping html');
-    return gulp
-      .src(paths.static)
-      .pipe(plumber())
-      .pipe(jade({
-        locals: require('./gulp.data')
-      }))
-      .pipe(gulp.dest(paths.dump.concat('/html')));
-  }
+gulp.task('reload', function() {
+  return livereload.reload();
 });
 
 gulp.task('forever', function() {
@@ -114,6 +91,7 @@ function forever() {
 gulp.task('nodemon', function() {
   // start the livereload server.
   livereload.listen();
+
   nodemon({
     script: 'app.js',
     watch: paths.src,

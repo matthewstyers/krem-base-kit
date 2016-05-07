@@ -1,5 +1,1 @@
-module.exports = {
-  development: require('./development'),
-  production: require('./production'),
-  staging: require('./staging')
-};
+module.exports = require(`./${process.env.NODE_ENV}`);

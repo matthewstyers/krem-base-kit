@@ -12,20 +12,11 @@ keystone.pre('render', middleware.initNav, middleware.flashMessages);
 // Import Route Controllers
 var routes = {
   views: importRoutes('./views'),
-  tenets: importRoutes('./tenets')
 };
 
 // Setup Route Bindings
 exports = module.exports = function(app) {
   // Views
   app.get('/', routes.views.index);
-  rest.expose({
-    Suite: {
-      populate: ['region', 'property']
-    },
-    Inquiry: {
-      methods: ['create', 'update']
-    },
-    Gallery: true
-  }).start();
+// rest.expose({}).start();
 };

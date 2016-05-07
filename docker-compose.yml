@@ -1,9 +1,9 @@
 server:
-  # build: ./server
-  container_name: nlp_server
+  build: ./server
+  container_name: keystone
   env_file:
     - ./server.env
-  image: abstractmediaco/nlp-server:dev
+  # image: abstractmediaco/nlp-server:dev
   links:
     - client
   ports:
