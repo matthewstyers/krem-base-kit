@@ -1,0 +1,77 @@
+extends ../layouts/default 
+
+block content
+	.section#first
+		.header-content
+			.inner
+				h1.cursive New Line Properties
+				#react
+		video#video-background.fillWidth.fadeIn.wow.collapse.in(autoplay='', loop='', data-wow-delay='0.5s', poster='https://s3-us-west-2.amazonaws.com/coverr/poster/Traffic-blurred2.jpg')
+			source(src='https://s3-us-west-2.amazonaws.com/coverr/mp4/Traffic-blurred2.mp4', type='video/mp4')
+			| Your browser does not support the video tag. I suggest you upgrade your browser.
+	.section#spaces
+		.container.text-xs-center
+			h1.display-3.section-title.text-uppercase Spaces
+			.section-contents
+				+deck({
+					cardType: 'space',
+					data: spaces
+				})
+	.section#work(style='background-color:#eee;color:#282828')
+		.container.text-xs-center
+			h1.display-3.section-title.text-uppercase Work
+			.section-contents
+				.grid-flex
+					each image in portfolio.images
+						img.img-fluid.card-img(src='/gallery-images/' + image.filename)
+
+	.section#about
+		.container.text-xs-center
+			h1.display-3.section-title.text-uppercase About
+				.section-contents
+					h2 [SOME STUFF ABOUT TOM PHILLIPS]
+
+	#contact.section(style='background-color:#eee;color:#282828')
+		.container.text-xs-center
+			h1.display-3.section-title.text-uppercase Make an Inquiry
+			.section-contents
+				.row: .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1.col-sm-12
+					form.form
+						.form-group
+							label.sr-only(for='name')
+							input.form-control.form-control-lg(type='text', placeholder='Name')
+						.form-group
+							label.sr-only(for='email')
+							input.form-control.form-control-lg(type='text', placeholder='Email')
+						.form-group
+							label.sr-only(for='phone')
+							input.form-control.form-control-lg(type='text', placeholder='Phone')
+						.form-group
+							label.sr-only(for='property')
+							select.c-select.form-control.form-control-lg
+								option.selected(value='' label='Space')
+								each space in spaces
+									option(value=space.key label=space.name) 
+						.form-group
+							label.sr-only(for='note')
+							textarea.form-control.form-control-lg(rows='3', placeholder='Your message here..')
+						button.btn.btn-secondary-outline.btn-lg(type='button', data-toggle='modal', data-target='#alertModal') Send 
+							span.i.ion-android-arrow-forward
+	#aboutModal.modal.fade(tabindex='-1', role='dialog', aria-hidden='true')
+		.modal-dialog
+			.modal-content
+				.modal-body
+					h1 ITZA CONTACTA FORMA
+					button.btn.btn-primary-outline.btn-lg.center-block(data-dismiss='modal', aria-hidden='true')	OK 
+	#alertModal.modal.fade(tabindex='-1', role='dialog', aria-hidden='true')
+		.modal-dialog.modal-sm
+			.modal-content
+				.modal-body
+					h2.text-center Hellz bellz!
+					p.text-center
+						| You submit that form, bro. #[br]
+					button.btn.btn-primary-outline.btn-lg.center-block(data-dismiss='modal', aria-hidden='true')
+						| OK 
+						span.i.ion-android-close
+block js
+	script(src='/dist/bundle.js')

@@ -1,0 +1,31 @@
+server:
+  # build: ./server
+  container_name: nlp_server
+  env_file:
+    - ./server.env
+  image: abstractmediaco/nlp-server:dev
+  links:
+    - client
+  ports:
+    - "80:5000"
+    - "3001:3001"
+    - "35729:35729"
+  restart: always
+  volumes:
+    - ./server:/app/server
+  volumes_from:
+    - client
+  working_dir: /app/server
+client:
+  # build: ./client
+  container_name: nlp_client
+  env_file:
+    - ./client.env
+  image: abstractmediaco/nlp-client:dev
+  ports:
+    - "8080:8080"
+    - "3000:3000"
+  restart: always
+  working_dir: /app/client
+  volumes:
+    - ./client:/app/client

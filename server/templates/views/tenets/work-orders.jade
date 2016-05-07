@@ -1,0 +1,43 @@
+extends ../../layouts/default
+
+block content
+	.section-interior
+		.container.section-wrapper
+			if (workOrders && workOrders.length)
+				h1.display-4.section-title Current Work Orders
+				table.table.table-striped
+					thead
+						tr
+							td Name
+							td Age
+							td Status
+					tbody
+						each order in workOrders
+							tr
+								td= order.name
+								td= order._.createdAt.moment().from()
+								td= order.status
+			h1.display-4.section-title Create a New Work Order
+			.row: .col-lg-8.col-lg-offset-2.col-md-10.col-md-offset-1.col-sm-12
+				form(method='post')
+					input(type='hidden' value='newWorkOrder' name='action')
+					input(type='hidden' value=formData.tenet=tenet._id name='tenet')
+					.form-group
+						label.sr-only(for='name')
+						input.form-control.form-control-lg(type='text', placeholder='What needs to be done?' value=formData.name name='name')
+					if (tenet && tenet.spaces.length > 1)
+						.form-group
+							label.sr-only(for='space')
+							select.c-select(name='space').form-control
+								option(value='' label='Space')
+								each space in tenet.spaces
+									option(value=space.id label=space.name)
+					.form-group
+						label.sr-only(for='note')
+						textarea.form-control.form-control-lg(rows='3', placeholder='Details')
+					.form-group(style='padding:2rem 0')
+						+submit({
+							text: 'Submit',
+							type: 'primary-outline btn-xl pull-xs-right',
+							icon: 'plus'
+						})

@@ -1,0 +1,41 @@
+
+.section {
+  display: flex;
+  min-height: 100%;
+  min-height: 100vh;
+  padding: 3rem 0;
+  background-color: $gray-lightest;
+
+  align-items: flex-start;
+
+  .section-title {
+    padding: 1rem 0;
+  }
+}
+#first {
+  height: auto;
+  height: 50vh;
+  color: $brand-secondary;
+}
+
+.section-interior {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  padding: 2rem 0;
+
+  align-items: center;
+
+  .section-title {
+    padding: 2rem 0;
+  }
+  .section-wrapper {
+    width: 100%;
+  }
+}
+.section-light {
+  color: $brand-primary;
+  .btn-primary {
+    color: $brand-primary;
+  }
+}

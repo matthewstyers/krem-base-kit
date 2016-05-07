@@ -1,0 +1,15 @@
+include ../../mixins/index
+
+footer#footer
+	.container-fluid.text-xs-center
+		span.i.fa.fa-copyright(style='margin-right:2px')
+		| 2016 !{brand}, All Rights Reserved. Site by
+		|  #[a(href='http://abstractmediaco.com' target='_blank') Abstract Media].
+		unless tenet
+			.text-md-right
+				+abtn({
+					text: 'TENET LOGIN',
+					href: 'tenets',
+					type: 'secondary-outline btn-sm',
+					target: '_blank' 
+				})

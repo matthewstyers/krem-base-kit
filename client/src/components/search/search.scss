@@ -1,0 +1,14 @@
+@import '../../styles/local/variables';
+
+#listing-search {
+  align-items: center;
+  .form-group {
+    margin: 0 1rem;
+  }
+  .form-inline {
+    margin: 1rem;
+  }
+  select {
+    border: 1px solid #eee;
+  }
+}

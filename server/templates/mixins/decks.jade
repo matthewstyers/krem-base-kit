@@ -1,0 +1,7 @@
+mixin deck(options)
+	.card-deck
+		.row
+			if (options.cardType === 'space' )
+				each space in options.data
+					.col-lg-4.col-md-6.col-sm-12
+						+card-space(space)

@@ -1,0 +1,89 @@
+mixin card-space(space)
+	.card
+		.card-img-container
+			if space.featureImage
+				img.card-img-top(src='/space-images/' + space.featureImage.filename, alt='space, man')
+		.card-block
+			h2.card-title !{space.name}
+			p.small
+				| !{space.address.street1} #[br]
+				if (space.address.street2)
+					| !{space.address.street2} #[br]
+				| !{space.address.suburb}, !{space.address.state} !{space.address.postcode}
+		.card-footer
+			.text-xs-center
+				+mbtn({
+					id: space.key,
+					text: 'Details',
+					type: 'success-outline'
+				})
+	div(id=space.key aria-hidden='true').modal.fade.text-xs-left
+		.modal-dialog.modal-md
+			.modal-content
+				.modal-header
+					h1.display-4= space.name
+				.modal-body
+					.carousel(data-interval='5000' data-pause='hover' data-keyboard=
+					'true' data-wrap='true' id=space.key + '-carousel')
+						.slide(data-ride='carousel')
+							ol.carousel-indicators
+								li.active(data-target=space.key + '-carousel', data-slide-to=space.featureImage.filename)
+								each image in space.images
+									li.active(data-target=space.key + '-carousel', data-slide-to=image.filename)
+							.carousel-inner(role='listbox')
+								.carousel-item.active
+									img(src='/space-images/' + space.featureImage.filename)
+								each image in space.images
+									.carousel-item
+										img(src='/space-images/' + image.filename, )
+							a.left.carousel-control(href='#' + space.key + '-carousel', role='button', data-slide='prev')
+								span.icon-prev(aria-hidden='true')
+								span.sr-only Previous
+							a.right.carousel-control(href=href='#' + space.key + '-carousel', role='button', data-slide='next')
+								span.icon-next(aria-hidden='true')
+								span.sr-only Next
+						ul.list-group.list-group-flush#space-details
+							li.list-group-item
+								small= space.description
+							li.list-group-item
+								.row
+									.col-lg-9
+										| !{space.address.street1} #[br]
+										if (space.address.street2)
+											| !{space.address.street2} #[br]
+										| !{space.address.suburb}, !{space.address.state} !{space.address.postcode}
+									.col-lg-3
+										.text-xs-right
+											+abtn({
+												text: 'Map',
+												icon: 'map-marker',
+												type: 'success-outline'
+											})
+							if (!space.isAvailable)
+								li.list-group-item.list-group-item-warning
+									strong Available !{space.availableDate}
+							li.list-group-item
+								| #[strong Size]
+								| #[span.pull-xs-right !{space.squareFeet} ft.#[sup 2]]
+							li.list-group-item
+								| #[strong Price]
+								span.pull-xs-right 
+									| $!{space.listPrice} per ft.#[sup 2]/yr.
+							li.list-group-item
+								h4 Key Features
+								each feature in space.keyFeatures
+									| !{feature} #[br]
+				.modal-footer
+					.pull-xs-left
+						button.btn.btn-danger-outline(data-dismiss='modal', aria-hidden='true')
+							i.fa.fa-times(style='margin-right:6px')
+							| close
+					+btn({
+						text: 'Contact',
+						icon: 'plus',
+						btnType: 'button',
+						type: 'primary-outline',
+						href: '#contact',
+						dismiss: 'modal',
+						click: "$('html, body').animate({scrollTop: $('#contact').offset().top}, 600);"
+					})

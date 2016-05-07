@@ -1,0 +1,194 @@
+"*":
+  "atom-beautify":
+    apex: {}
+    arduino: {}
+    c: {}
+    cfml: {}
+    coffeescript: {}
+    cpp: {}
+    cs: {}
+    css:
+      default_beautifier: "Pretty Diff"
+      disabled: true
+      indent_comments: false
+    d: {}
+    ejs: {}
+    erb: {}
+    fortran: {}
+    general:
+      _analyticsUserId: "128b479c-3546-44be-b0ea-964f4a35bf6a"
+      muteUnsupportedLanguageErrors: true
+    gherkin: {}
+    handlebars: {}
+    html:
+      disabled: true
+    jade: {}
+    java: {}
+    js:
+      brace_style: "end-expand"
+      break_chained_methods: true
+      disabled: true
+      end_with_newline: true
+      eval_code: true
+      keep_function_indentation: true
+      wrap_line_length: 80
+    json:
+      beautify_on_save: true
+    jsx:
+      break_chained_methods: true
+      disabled: true
+      space_after_anon_function: true
+    latex: {}
+    less:
+      beautify_on_save: true
+    marko: {}
+    mustache: {}
+    objectivec: {}
+    pawn: {}
+    perl: {}
+    php: {}
+    python: {}
+    riot: {}
+    ruby: {}
+    rust: {}
+    sass:
+      align_assignments: true
+      beautify_on_save: true
+      default_beautifier: "CSScomb"
+      indent_size: 2
+      newline_between_rules: true
+      preserve_newlines: true
+    scss:
+      align_assignments: true
+      beautify_on_save: true
+      convert_quotes: "single"
+      default_beautifier: "CSScomb"
+      indent_size: 2
+    spacebars: {}
+    sql: {}
+    svg: {}
+    swig: {}
+    tss: {}
+    twig: {}
+    typescript: {}
+    vala: {}
+    visualforce: {}
+    xml: {}
+    xtemplate: {}
+  "atom-material-ui":
+    accentColor: "Blue"
+    compactTreeView: true
+    depth: true
+    fontSize: "Small"
+    panelContrast: true
+    rippleAccentColor: true
+    showTabIcons: "Show on all tabs"
+    slimScrollbar: true
+    tabSize: "Small"
+    useRobotoInUI: true
+  "autocomplete-plus": {}
+  autosave: {}
+  build:
+    stealFocus: false
+  core:
+    closeEmptyWindows: false
+    destroyEmptyPanes: false
+    disabledPackages: [
+      "language-javascript"
+      "tidy-markdown"
+      "language-javascript-semantic"
+      "language-java"
+      "sublime-panes"
+    ]
+    ignoredNames: [
+      ".git"
+      ".DS_Store"
+    ]
+    openEmptyEditorOnStart: false
+    projectHome: "/Users/matthewstyers/projects"
+    themes: [
+      "nucleus-dark-ui"
+      "one-dark-syntax"
+    ]
+  editor:
+    backUpBeforeSaving: true
+    invisibles: {}
+    showIndentGuide: true
+  esformatter:
+    formatOnSave: true
+  "exception-reporting":
+    userId: "4fe11ae2-6f16-c6d9-e5cd-02caae0524ea"
+  "find-and-replace":
+    openProjectFindResultsInRightPane: true
+  "fold-functions":
+    autofold: true
+  "git-plus":
+    gitPath: "/usr/bin/git"
+    includeStagedDiff: false
+  "jade-beautify":
+    FILL_TAB: false
+    OMIT_DIV: true
+  "language-babel":
+    autoIndentJSX: false
+    babelSourcePath: "/usr/local"
+    babelTranspilePath: "/usr/local/lib"
+    createMap: true
+    suppressTranspileOnSaveMessages: false
+    transpileOnSave: true
+  linter:
+    displayLinterStatus: false
+    lintOnFly: false
+    showErrorInline: false
+    underlineIssues: false
+  "linter-eslint":
+    disableEslintIgnore: true
+    globalNodePath: "/usr/local"
+  "merge-conflicts": {}
+  minimap:
+    absoluteMode: true
+    adjustMinimapWidthToSoftWrap: false
+    charHeight: 1
+    plugins:
+      linter: true
+    textOpacity: 0.25
+  "one-dark-ui": {}
+  pigments:
+    ignoredScopes: [
+      "\\.comment"
+    ]
+    supportedFiletypes: [
+      ".scss"
+    ]
+  preview:
+    _analyticsUserId: "61a5f578-0e68-481f-88eb-17a9fa2081fa"
+  react:
+    enabledForAllJavascriptFiles: true
+  refactor:
+    highlightError: false
+    highlightReference: false
+  "smart-tab-name": {}
+  "tidy-markdown":
+    ensureFirstHeaderIsH1: false
+  "tidy-tabs":
+    accessedThreshold: 10
+    minimumTabs: 6
+    modifiedThreshold: 5
+    runOnSave: true
+  "toggle-quotes": {}
+  "tree-view":
+    hideIgnoredNames: true
+  welcome:
+    showOnStartup: false
+  whitespace:
+    ignoreWhitespaceOnCurrentLine: false
+".coffee.jsx.source":
+  editor:
+    autoIndentOnPaste: true
+".jade.source":
+  editor:
+    autoIndent: true
+    autoIndentOnPaste: false
+    showInvisibles: true
+    softWrap: true
+    softWrapAtPreferredLineLength: true
+    softWrapHangingIndent: 2

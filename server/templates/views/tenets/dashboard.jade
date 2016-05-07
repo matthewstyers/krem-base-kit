@@ -1,0 +1,38 @@
+extends ../../layouts/default
+
+block content
+	.section-interior.text-xs-center
+		.container.section-wrapper
+			unless tenet
+				#tenet-wrapper
+					h1.display-2.section-title.text-uppercase tenet Login
+					.section-contents
+						.row
+							.col-lg-6.col-lg-offset-3.col-md-8.col-md-offset-2.col-sm-12
+								form(method='post')
+									input(type='hidden' value='login' name='action')
+									.form-group
+										label.sr-only(for='user')
+										input.form-control.form-control-lg(type='text', placeholder='Email' value=formData.email name='email')
+									.form-group
+										label.sr-only(for='password')
+										input.form-control.form-control-lg(type='password', placeholder='Password' value=formData.password name='password')
+									//- .pull-xs-right(style='margin-top:-10px;font-size:0.75rem')
+									//- 	a(href='tenets/password-reset') Password Reset
+									.form-group(style='padding:2rem 0')
+										+submit({
+											text: 'Login',
+											type: 'primary-outline btn-xl',
+											icon: 'rocket'
+										})
+			else
+				h1.display-2 Tenet Dashboard
+				.section-contents
+					.row: .col-lg-12
+						.btn-toolbar
+							+abtn({
+								href: '/tenets/work-orders',
+								text: 'Work Orders',
+								icon: 'wrench',
+								type: 'primary-outline btn-xl'
+							})

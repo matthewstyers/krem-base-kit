@@ -1,0 +1,214 @@
+@import '../../../styles/local/variables';
+
+#region-selector {
+  display: flex;
+  width: auto;
+  padding: 3rem 0;
+  margin: auto;
+  color: $brand-primary;
+  text-align: center;
+
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  h1, h2, h3 {
+    margin-bottom: 1rem;
+  }
+  #region-selector-title {
+    width: 100%;
+
+    order: 1;
+    flex: 0 0 auto;
+    align-self: flex-start;
+  }
+  #region-selector-content {
+    width: 100%;
+
+    order: 2;
+    flex: 1 0 auto;
+    align-self: flex-end;
+    justify-content: center;
+  }
+  #card-austin {
+    height: 250px;
+    background-image: url(/gallery-images/austin-background-img.jpg);
+    background-size: cover;
+  }
+  #card-houston {
+    height: 250px;
+    background-image: url(/gallery-images/houston-background-img.jpg);
+    background-size: cover;
+  }
+  #card-denver {
+    height: 250px;
+    background-image: url(/gallery-images/denver-background-img.jpg);
+    background-size: cover;
+  }
+
+  .card {
+    /**
+   * Lay out the children of this container with
+   * flexbox, which is horizontal by default.
+   */
+    display: flex;
+    overflow: hidden;
+    /**
+   * Rotate the main axis so that the children
+   * are laid out vertically.
+   */
+    flex-direction: column;
+    border: 1px solid #cad0d2;
+    border-radius: 4px;
+    -webkit-transition: all 0.35s;
+       -moz-transition: all 0.35s;
+            transition: all 0.35s;
+    .filter {
+      position: absolute;
+      z-index: 10;
+      display: none;
+      width: 100%;
+      height: 100%;
+      background-color: transparentize($brand-primary, 0.8);
+      background-size: cover;
+    }
+  }
+  .card:hover {
+    .filter {
+      display: block;
+    }
+    .card__descriptionText {
+      a {
+        text-decoration: none;
+      }
+    }
+  }
+
+  .card__description {
+    /**
+     * Lay out the children of this container with
+     * flexbox.
+     */
+    display: flex;
+    padding: 15px;
+    /**
+     * We're going to lay out this element's children
+     * just like in the "Centered prompt" example.
+     * First we'll rotate the main axis so that the
+     * children are laid out vertically.
+     */
+    flex-direction: column;
+    /**
+     * Just like in the "Centered prompt" example,
+     * we'll align the children in the center, along
+     * the main axis.
+     */
+
+    align-items: center;
+    /**
+     * And just like in the "Centered prompt", we'll
+     * group the children in the center of their
+     * container.
+     */
+    justify-content: center;
+    h1 {
+      color: transparentize($brand-secondary, 0.15);
+      text-shadow: 3px 3px 0 #000,
+      -1px -1px 0 #000,
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+      1px 1px 0 #000;
+
+      -webkit-text-stroke: 2px $brand-secondary;;
+    }
+  }
+
+  .card__descriptionIcon {
+    margin-bottom: 10px;
+    font-size: 32px;
+  }
+
+  .card__descriptionText {
+    font-size: 12px;
+    color: $brand-secondary;
+    text-align: center;
+  }
+
+  .card__price {
+    padding: 5px 15px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #57727c;
+    text-align: center;
+    background-color: #eef3f5;
+    border-top: 1px solid #d7dbdd;
+  }
+
+  .card--fixedWidth {
+    max-width: 120px;
+  }
+  .cardGroup {
+    /**
+     * Lay out the children of this container with
+     * flexbox, which is horizontal by default.
+     */
+    display: flex;
+    overflow: hidden;
+    // border: 1px solid #cad0d2;
+    border-radius: 4px;
+
+    flex-grow: 1;
+    align-content: center;
+    .card {
+      // margin: 0 1rem;
+      max-width: 350px;
+      max-height: 350px;
+    }
+  }
+
+  .cardGroup__card {
+    border: none;
+    border-radius: 0;
+    /**
+       * The flex property is a short-hand for setting
+       * the flex-shrink, flex-grow, and flex-basis
+       * properties. These properties control how the
+       * element resizes to fill its container.
+       *
+       * We'll also set flex-grow to 1 so that it
+       * will expand to fill its container. (The
+       * default value is 0.)
+       *
+       * We'll set flex-shrink to 1 so that the element
+       * will shrink as its container gets smaller.
+       * (The default value is 1.)
+       *
+       * Last, we set flex-basis to 0 so that its
+       * size is solely determined by the size of
+       * the container. (The default value
+       * is auto, which would cause the content's
+       * size to also be a factor in this calculation.)
+       *
+       * The net result of these properties is that the
+       * element is a fluid size, and will expand and
+       * shrink with its container and siblings, but
+       * they will all have the same size, even if they
+       * have different amounts of content.
+       */
+
+    flex: 1 1 0;
+  }
+
+  .cardGroup__card + .cardGroup__card {
+    border-left: 1px solid #d7dbdd;
+  }
+
+  .cardGroup__cardDescription {
+    /**
+       * We're doing almost the exact same thing here as
+       * we did above. The difference is that its
+       * flex-basis is auto, so now the size of its content
+       * will affect how large it is.
+       */
+    flex: 1 1 auto;
+  }
+}

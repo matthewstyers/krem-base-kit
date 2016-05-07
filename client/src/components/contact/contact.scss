@@ -1,0 +1,22 @@
+@import '../../styles/local/variables';
+
+#contactForm {
+  font-weight: 200;
+  text-align: center;
+  .form-group[hidden] {
+    margin-bottom: 0;
+  }
+  select {
+    width: 100%;
+    margin: 0;
+    color: $brand-primary;
+    border: none;
+  }
+  #submit {
+    color: $brand-primary;
+    border-color: $brand-primary;
+  }
+}
+#contactFormHeading {
+  text-align: center;
+}

@@ -1,0 +1,29 @@
+{
+  "indent": {
+    "value": "  ",
+    "FunctionExpression": 1,
+    "ArrayExpression": 1,
+    "ObjectExpression": 1
+  },
+  "plugins": [
+    "esformatter-ignore",
+    "esformatter-jsx",
+    "esformatter-quotes",
+    "esformatter-remove-trailing-commas"
+  ],
+  "jsx": {
+    "formatJSX": true, //default setting ... should always be true
+    "attrsOnSameLineAsTag": false, // move each attribute to its own line
+    "maxAttrsOnTag": 0, // if lower or equal than 3 attributes, they will be kept on a single line
+    "firstAttributeOnSameLine": false, // keep the first attribute in the same line as the tag
+    "formatJSXExpressions": true, // default true, if false jsxExpressions won't be recursively formatted
+    "JSXExpressionsSingleLine": true, // default true, if false the JSXExpressions might span several lines
+    "alignWithFirstAttribute": false, // do not align attributes with the first tag
+    "spaceInJSXExpressionContainers": " ", // default to one space. Make it empty if you don't like spaces between JSXExpressionContainers
+    "htmlOptions": {}
+  },
+  "quotes": {
+    "type": "single",
+    "avoidEscape": false
+  }
+}
