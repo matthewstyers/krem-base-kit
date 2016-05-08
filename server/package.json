@@ -17,7 +17,7 @@
     "connect-livereload": "0.5.4",
     "gulp-install": "0.6.0",
     "gulp-jade": "1.1.0",
-    "gulp-jshint": "2.0.0",
+    "gulp-jshint": "1.9.0",
     "gulp-livereload": "3.8.1",
     "gulp-nodemon": "2.0.6",
     "gulp-plumber": "1.1.0",

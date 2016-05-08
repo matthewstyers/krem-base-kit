@@ -9,5 +9,5 @@ keystone:
     - "35729:35729"
   restart: always
   volumes:
-    - ./server:/app/server
+    - .:/app/server
   working_dir: /app/server
