@@ -8,11 +8,11 @@ keystone.init({
   'admin path': 'admin',
   'auth': true,
   'auto update': true,
-  'brand': process.env.BRAND || 'BRAND',
+  'brand': config.brand,
   'favicon': 'public/favicon.ico',
-  'mongo': process.env.MONGOLAB_URI,
-  'name': process.env.PROJECT_NAME || 'PROJECT_NAME',
-  'port': process.env.PORT || 5000,
+  'mongo': config.mongo,
+  'name': config.projectName,
+  'port': config.port,
   'session store': 'connect-mongo',
   'session': true,
   'static': ['public'],
@@ -27,6 +27,7 @@ keystone.set('nav', {
   'inquiries': 'inquiries',
   'users': ['users']
 });
+
 keystone.set('app config', config);
 keystone.set('google api key', process.env.GOOGLE_BROWSER_API_KEY || undefined);
 keystone.set('google server api key', process.env.GOOGLE_SERVER_API_KEY || undefined);
@@ -49,9 +50,11 @@ function startApp() {
   });
 }
 
-if (config.server.cluster === true) {
+// when set, starts multiple instances of the app for rolling restarts.
+if (config.cluster) {
   if (cluster.isMaster) {
-    var numWorkers = require('os').cpus().length;
+    var numWorkers = config.maxClusterThreads ?
+      config.maxClusterThreads : require('os').cpus().length;
 
     console.log('Master cluster setting up ' + numWorkers +
       ' workers...');

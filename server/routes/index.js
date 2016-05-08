@@ -1,9 +1,9 @@
 var keystone = require('keystone');
 var middleware = require('./middleware');
 var importRoutes = keystone.importer(__dirname);
-var rest = require('restful-keystone')(keystone, {
-  root: '/api/v1'
-});
+// var rest = require('restful-keystone')(keystone, {
+//   root: '/api/v1'
+// });
 
 // Common Middleware
 keystone.pre('routes', middleware.initLocals);
