@@ -23,22 +23,21 @@ keystone.init({
 
 keystone.import('models');
 
-keystone.set({
-  'app config': config,
-  'google api key': process.env.GOOGLE_BROWSER_API_KEY || undefined,
-  'google server api key': process.env.GOOGLE_SERVER_API_KEY || undefined,
-  'locals': {
-    _: require('lodash'),
-    env: keystone.get('env'),
-    utils: keystone.utils,
-    editable: keystone.content.editable
-  },
-  'nav': {
-    'inquiries': 'inquiries',
-    'users': ['users']
-  },
-  'routes': require('./routes'),
+keystone.set('nav', {
+  'inquiries': 'inquiries',
+  'users': ['users']
 });
+keystone.set('app config', config);
+keystone.set('google api key', process.env.GOOGLE_BROWSER_API_KEY || undefined);
+keystone.set('google server api key', process.env.GOOGLE_SERVER_API_KEY || undefined);
+keystone.set('locals', {
+  _: require('lodash'),
+  env: keystone.get('env'),
+  utils: keystone.utils,
+  editable: keystone.content.editable
+});
+
+keystone.set('routes', require('./routes'));
 
 function startApp() {
   keystone.start({

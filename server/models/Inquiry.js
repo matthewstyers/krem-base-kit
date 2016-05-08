@@ -22,10 +22,6 @@ Inquiry.add({
     type: Types.Text,
     default: 'Contact Form - General Inquiry'
   },
-  suite: {
-    type: Types.Relationship,
-    ref: 'Suite'
-  },
   message: {
     type: Types.Text
   },
@@ -76,5 +72,5 @@ Inquiry.schema.methods.sendNotificationEmail = function(callback) {
 };
 
 Inquiry.defaultSort = '-createdAt';
-Inquiry.defaultColumns = 'name, email, inquiryType, suite, createdAt';
+Inquiry.defaultColumns = 'name, email, inquiryType, createdAt';
 Inquiry.register();

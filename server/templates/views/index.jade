@@ -18,7 +18,20 @@ html(lang="en")
 
 	body(data-spy="scroll" data-target="#topNav")
 		#react
-		script(src=scriptSrc)
+		
+		if (scriptSrc)
+			script(src=scriptSrc)
+		else
+			h1 MISSION ACCOMPLISHED.
+			img(src='https://nesncom.files.wordpress.com/2015/07/alex-rodriguez.gif?w=640&h=360')
+			h2 Keystone is up and running. 
+			p To serve a React bundle from this view, just set&nbsp;
+				code 
+					strong res.locals.scriptSrc
+				| &nbsp;to the script source, and set the DOM target to 
+				code 
+					strong #react.
+			
 		script(src="//cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.js")
 		script(src="//cdn.jsdelivr.net/respond/1.4.2/respond.min.js")
 		if user && user.canAccessKeystone
