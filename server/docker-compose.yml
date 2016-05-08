@@ -1,0 +1,13 @@
+keystone:
+  build: .
+  container_name: keystone
+  env_file:
+    - .env
+  ports:
+    - "80:5000"
+    - "3001:3001"
+    - "35729:35729"
+  restart: always
+  volumes:
+    - ./server:/app/server
+  working_dir: /app/server

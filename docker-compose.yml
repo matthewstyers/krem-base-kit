@@ -1,21 +1,12 @@
 server:
-  build: ./server
-  container_name: keystone
-  env_file:
-    - ./server.env
+  extends:
+    file: ./server/docker-compose.yml
+    service: keystone
   # image: abstractmediaco/nlp-server:dev
   links:
     - client
-  ports:
-    - "80:5000"
-    - "3001:3001"
-    - "35729:35729"
-  restart: always
-  volumes:
-    - ./server:/app/server
   volumes_from:
     - client
-  working_dir: /app/server
 client:
   # build: ./client
   container_name: nlp_client
