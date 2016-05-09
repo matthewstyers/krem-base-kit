@@ -2,21 +2,13 @@ server:
   extends:
     file: ./server/docker-compose.yml
     service: keystone
-  # image: abstractmediaco/nlp-server:dev
+  image: abstractmediaco/keystone-container
   links:
     - client
   volumes_from:
     - client
 client:
-  # build: ./client
-  container_name: nlp_client
-  env_file:
-    - ./client.env
-  image: abstractmediaco/nlp-client:dev
-  ports:
-    - "8080:8080"
-    - "3000:3000"
-  restart: always
-  working_dir: /app/client
-  volumes:
-    - ./client:/app/client
+  extends:
+    file: ./client/docker-compose.yml
+    service: react
+  image: abstractmediaco/react-redux-container
