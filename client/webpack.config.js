@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-const httString = 'http://';
+const httpString = 'http://';
 const PORT = process.env.PORT || 8080;
 const HOSTNAME = process.env.DOCKER_MACHINE_IP;
 
@@ -69,7 +69,7 @@ exports.development = {
     hideModules: true,
     hot: true,
     proxy: {
-      '*': httString.concat(HOSTNAME, ':', PORT)
+      '*': httpString.concat(HOSTNAME, ':', PORT)
     },
     publicPath: '/',
     quiet: false,
@@ -100,7 +100,8 @@ exports.development = {
   plugins: common.plugins.concat(
     new webpack.DefinePlugin({
       'process.env': {
-        'HOST': JSON.stringify(process.env.DOCKER_MACHINE_IP)
+        'HOST': JSON.stringify(process.env.DOCKER_MACHINE_IP),
+        'BRAND': JSON.stringify(process.env.BRAND)
       }
     }),
     new webpack.HotModuleReplacementPlugin(),

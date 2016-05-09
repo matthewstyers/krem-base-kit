@@ -25,35 +25,14 @@ export default class Nav extends Component {
             <ul className='nav navbar-nav nav-pills nav-pills-danger muted'>
               <li className='nav-item active'>
                 <a
-                  href='#first'
+                  href='#home'
                   className='nav-link page-scroll navbar-brand'><i className='fa fa-home fa-left'></i> { this.props.brand }</a>
               </li>
               <li className='nav-item'>
                 <a
-                  href='#spaces'
-                  className='nav-link'>Spaces</a>
+                  href='#main-content'
+                  className='nav-link'>Main Content</a>
               </li>
-              <li className='nav-item'>
-                <a
-                  href='#work'
-                  className='nav-link'>Work</a>
-              </li>
-              <li className='nav-item'>
-                <a
-                  href="#about"
-                  className="nav-link">About</a>
-              </li>
-              <li className='nav-item'>
-                <a
-                  href='#contact'
-                  className='nav-link'>Contact</a>
-              </li>
-              <a
-                data-toggle='modal'
-                title='Contact Tom Phillips'
-                href='#aboutModal'
-                id='topNavContact'
-                className='nav-item nav-link page-scroll pull-xs-right hidden-md-down'>1.866.NEW-LINE</a>
             </ul>
           </div>
         </div>

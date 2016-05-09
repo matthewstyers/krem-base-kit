@@ -1,9 +1,8 @@
 import React from 'react';
 import { Route, IndexRoute } from 'react-router';
 
-import App from './components/app';
-import Index from './components/views/Index';
-// import ListingDeck from './components/listings/ListingDeck';
+import App from './components/App';
+import Index from './views/Index';
 
 export default (
 <Route

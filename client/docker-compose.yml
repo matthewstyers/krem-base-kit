@@ -1,0 +1,11 @@
+react:
+  build: .
+  container_name: react_container
+  env_file:
+    - .env
+  ports:
+    - "8080:8080"
+  restart: always
+  working_dir: /app/client
+  volumes:
+    - .:/app/client

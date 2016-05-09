@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+require('./section.scss');
 
+import React, { Component } from 'react';
 
 export default class Section extends Component {
   render() {
