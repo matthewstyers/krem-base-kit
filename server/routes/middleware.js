@@ -19,43 +19,8 @@ exports.initLocals = function(req, res, next) {
 exports.initNav = function(req, res, next) {
 
   var locals = res.locals;
-  var tenet = locals.tenet;
-
-  if(!tenet) {
-    tenet = req.session.tenet;
-  }
-
-  if (tenet) {
-    locals.navLinks = [{
-      label: 'Work Orders',
-      key: 'work-orders',
-      href: 'tenets/work-orders'
-    }, {
-      label: 'Pay Rent',
-      key: 'rent',
-      href: 'tenets/#'
-    }];
-  } else {
-    locals.navLinks = [{
-      label: 'Spaces',
-      key: 'spaces',
-      href: '#spaces'
-    }, {
-      label: 'Work',
-      key: 'work',
-      href: '#work'
-    }, {
-      label: 'About',
-      key: 'about',
-      href: '#about'
-    }, {
-      label: 'Contact',
-      key: 'contact',
-      href: '#contact'
-    }];
-  }
+  locals.brand = keystone.get('brand');
   next();
-
 };
 
 /*
@@ -88,9 +53,8 @@ exports.requireUser = function(req, res, next) {
 
   if (!req.user) {
     req.flash('error', 'Please sign in to access this page.');
-    res.redirect('/keystone/signin');
-  }
-  else {
+    res.redirect(`/${keystone.get('admin path')}/signin`);
+  } else {
     next();
   }
 
