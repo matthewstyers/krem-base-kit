@@ -1,14 +1,21 @@
-server:
-  extends:
-    file: ./server/docker-compose.yml
-    service: keystone
-  image: abstractmediaco/keystone-container
-  links:
-    - client
-  volumes_from:
-    - client
-client:
-  extends:
-    file: ./client/docker-compose.yml
-    service: react
-  image: abstractmediaco/react-redux-container
+version: '2'
+services:
+  server:
+    extends:
+      file: ./server/docker-compose.yml
+      service: web
+    links:
+      - client
+    volumes_from:
+      - client
+    image: abstractmediaco/abstract-site
+  client:
+    extends:
+      file: ./client/docker-compose.yml
+      service: react
+    image: abstractmediaco/react-redux-container:dev
+  # keystone:
+  #   extends:
+  #     file: ./keystone/docker-compose.yml
+  #     service: keystone
+  #   image: abstractmediaco/keystone

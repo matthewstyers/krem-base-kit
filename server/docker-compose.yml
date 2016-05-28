@@ -1,13 +1,15 @@
-keystone:
-  build: .
-  container_name: keystone
-  env_file:
-    - .env
-  ports:
-    - "80:5000"
-    - "3001:3001"
-    - "35729:35729"
-  restart: always
-  volumes:
-    - .:/app/server
-  working_dir: /app/server
+version: '2'
+services:
+  web:
+    # build: .
+    container_name: abstract_server
+    env_file:
+      - .env
+    ports:
+      - "80:5000"
+      - "3001:3001"
+      - "35729:35729"
+    volumes:
+      - .:/app/server
+      - ../keystone:/app/keystone
+    working_dir: /app/server
