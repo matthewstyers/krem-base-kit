@@ -1,0 +1,40 @@
+doctype html
+html(lang="en")
+
+	head
+		meta(charset="utf-8")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		meta(http-equiv="X-UA-Compatible" content="IE=edge")
+
+		title= title || brand
+		//- link(rel="shortcut icon", href="/favicon.ico", type="image/x-icon")
+
+		link(href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css", rel="stylesheet")
+		link(href='//cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css', rel='stylesheet')
+		link(rel='stylesheet', href='//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css')
+		//- link(rel='stylesheet', href='/dist/site.min.css')
+		script(src="https://maps.googleapis.com/maps/api/js")
+
+
+	body(data-spy="scroll" data-target="#topNav")
+		#react
+		
+		if (scriptSrc)
+			script(src=scriptSrc)
+		else
+			h1 MISSION ACCOMPLISHED.
+			img(src='https://nesncom.files.wordpress.com/2015/07/alex-rodriguez.gif?w=640&h=360')
+			h2 Keystone is up and running. 
+			p To serve a React bundle from this view, just set&nbsp;
+				code 
+					strong res.locals.scriptSrc
+				| &nbsp;to the script source, and set the DOM target to 
+				code 
+					strong #react.
+			
+		script(src="//cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.js")
+		script(src="//cdn.jsdelivr.net/respond/1.4.2/respond.min.js")
+		if user && user.canAccessKeystone
+			script.
+				document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] +
+				':35729/livereload.js?snipver=1"></' + 'script>')
