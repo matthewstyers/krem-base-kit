@@ -1,9 +1,6 @@
 var foreverMonitor = require('forever-monitor');
 var gulp = require('gulp');
 var install = require('gulp-install');
-var jade = require('gulp-jade');
-var jshint = require('gulp-jshint');
-var jshintReporter = require('jshint-stylish');
 var livereload = require('gulp-livereload');
 var nodemon = require('gulp-nodemon');
 var path = require('path');
@@ -60,15 +57,6 @@ If a large install occurs when nodemon starts, the app may crash with a
 'npm info is okay' and then emit a restart by simply touching any file nodemon
 is watching.
 */
-
-// reads the the source javascript and return a report of any errors.
-gulp.task('lint', function() {
-  var stream = gulp.src(paths.src)
-    .pipe(plumber())
-    .pipe(jshint())
-    .pipe(jshint.reporter(jshintReporter));
-  return stream;
-});
 
 // simple page refresh
 gulp.task('reload', function() {

@@ -6,9 +6,9 @@
     "async": "1.5.0",
     "connect-mongo": "1.1.0",
     "forever-monitor": "1.7.0",
-    "jade": "1.11.0",
-    "keystone": "file:./keystone-0.4.0-alpha.tgz",
+    "keystone": "file:/app/keystone",
     "lodash": "4.11.2",
+    "pug": "2.0.0-alpha8",
     "restful-keystone": "0.3.0",
     "underscore": "1.8.3",
     "winston": "2.2.0"
@@ -16,14 +16,11 @@
   "devDependencies": {
     "connect-livereload": "0.5.4",
     "gulp-install": "0.6.0",
-    "gulp-jade": "1.1.0",
-    "gulp-jshint": "1.9.0",
     "gulp-livereload": "3.8.1",
     "gulp-nodemon": "2.0.6",
     "gulp-plumber": "1.1.0",
     "gulp-shell": "0.5.2",
-    "gulp": "3.9.1",
-    "jshint-stylish": "0.1.3"
+    "gulp": "3.9.1"
   },
   "scripts": {
     "start": "gulp"

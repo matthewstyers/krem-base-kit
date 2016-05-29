@@ -8,12 +8,12 @@ services:
       - client
     volumes_from:
       - client
-    image: abstractmediaco/abstract-site
+    image: abstractmediaco/keystone-express-starter:dev
   client:
     extends:
       file: ./client/docker-compose.yml
       service: react
-    image: abstractmediaco/react-redux-container:dev
+    image: abstractmediaco/react-redux-starter:dev
   # keystone:
   #   extends:
   #     file: ./keystone/docker-compose.yml

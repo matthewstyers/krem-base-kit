@@ -1,7 +1,7 @@
 version: '2'
 services:
   web:
-    # build: .
+    build: .
     container_name: abstract_server
     env_file:
       - .env
