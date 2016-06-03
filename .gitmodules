@@ -4,3 +4,6 @@
 [submodule "client"]
 	path = client
 	url = git@github.com:matthewstyers/react-redux-starter.git
+[submodule "server"]
+	path = server
+	url = git@github.com:matthewstyers/keystone-express-starter.git
