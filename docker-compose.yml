@@ -8,14 +8,14 @@ services:
       - client
     volumes_from:
       - client
-    image: abstractmediaco/keystone-express-starter:dev
+    image: styers/keystone-express-starter:dev
   client:
     extends:
       file: ./client/docker-compose.yml
       service: react
-    image: abstractmediaco/react-redux-starter:dev
-  # keystone:
-  #   extends:
-  #     file: ./keystone/docker-compose.yml
-  #     service: keystone
-  #   image: abstractmediaco/keystone
+    image: styers/react-redux-starter:dev
+  keystone:
+    extends:
+      file: ./keystone/docker-compose.yml
+      service: keystone
+    image: styers/keystone:dev

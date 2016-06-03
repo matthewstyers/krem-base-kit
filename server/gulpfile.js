@@ -119,7 +119,7 @@ gulp.task('nodemon', function() {
 // default task (also the command Docker passes when the container starts,
 // so DON'T REMOVE IT.)
 if (process.env.NODE_ENV === 'development') {
-  gulp.task('default', ['lint', 'nodemon']);
+  gulp.task('default', ['nodemon']);
 } else {
   gulp.task('default', ['forever']);
 }
