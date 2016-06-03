@@ -19,7 +19,7 @@ The most tangible manifestation of this philosophy is in this kit's use of [Dock
 
 (_It's not coincidental that these four features comprise 1/3 of the [12-Factor Application](http://12factor.net)._)
 
-In it's vanilla configuration, the 4 fundamental components are configured as follows:
+In it's vanilla configuration, the 4 fundamental components are structured as follows:
 
 ```sh
 |---keystone:
@@ -34,48 +34,46 @@ In it's vanilla configuration, the 4 fundamental components are configured as fo
       git: https://github.com/matthewstyers/react-redux-starter
       docker: styers/react-redux-starter:dev
   |-mongo # mLab Sandbox (free)
-```
 
-## Prerequisites
+```
+## Getting Started
+### Prerequisites
 - Install [homebrew](http://brew.sh/) and [homebrew cask](http://caskroom.io/) on your Mac.
 
-## Installation steps
-### 1. Install [Docker Toolbox](https://www.docker.com/docker-toolbox) with Homebrew Cask
+### Installation steps
+#### 1. Install [Docker Toolbox](https://www.docker.com/docker-toolbox) with Homebrew Cask
 ```bash
 brew cask install dockertoolbox
 ```
 
-You shouldn't have to do anything once it's done installing, other than maybe enter your password.
-
 **What's happening:**
-_Docker toolbox installs several docker-related command line tools we'll be using. Installing with homebrew cask will all insure that Docker Toolbox's only dependency, [VirtualBox](https://www.virtualbox.org/), is also downloaded._
+_Docker toolbox installs several docker-related command line tools we'll be using. Installing with homebrew cask will all insure that Docker Toolbox's only dependency, [VirtualBox](https://www.virtualbox.org/), is also installed._
+
 ### 2. Create a VM with docker-machine
 ```bash
-docker-machine create --driver virtualbox --virtualbox-memory=2048 sds
+docker-machine create --driver virtualbox dev
 ```
 
 **What's happening:**
-_Docker-machine allows you to quickly create a VM (virtual machine) with VirtualBox. The easiest way to explain the VM is that it's a fully functional computer inside your computer, which we will use to run a docker container. With this command, we're basically saying "Hey, Docker-Machine, use VirtualBox to spin up a small Linux computer, and go ahead and give it a little extra RAM, because we're gonna need it."_
+_Docker-machine manages virtual machines. In this case we're just creating a simple linux kernal that will manage our app containers._
 
 ### 3. Check your dev machine's ip address
 ```bash
-docker-machine ip sds
+docker-machine ip dev
 ```
-**The IP address that's returned is where you'll point your browser to see your container in action.**
+**The IP address that's returned is the local address of the machine. It will almost definitely be** `192.168.99.100`.
 
 ### 4. Move to the VM's environment
 ```bash
-eval "$(docker-machine env sds)"
+eval "$(docker-machine env dev)"
 ```
 
 **What's happening:**
-_This command switches our terminal environment to use our new VM. Basically, we're telling our terminal that when we do something like, say, build a docker container, we actually want to do it inside our VM._
+_We're telling dockertoolbox that when we issue a docker-specific command (like_ `docker foo` or `docker-compose bar`_), we actually want that instruction redirected to the docker-machine environment._
 
-### 5. Recursively clone this repo from Github
-- point your terminal to where you're going to keep you top-level source code locally, using `cd` and stuff, then,
-
+### 5. Pull in the submodule projects
 ```bash
-git clone --recursive https://github.com/AbstractMediaCo/data-server.git swaco-data-server
+git clone --recursive https://github.com/matthew-styers.git swaco-data-server
 ```
 
 **What's happening:**
