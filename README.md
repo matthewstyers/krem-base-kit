@@ -23,7 +23,7 @@ In it's vanilla configuration, the 4 fundamental components are configured as fo
 
 ```sh
 |---keystone:
-      git:  https://github.com/matthewstyers/keystone-express-starter
+      git:  https://github.com/matthewstyers/keystone
       docker: styers/keystone:dev
     # available as a service for development/custom packing,
     # but can also be installed as package on the server
