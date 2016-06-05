@@ -61,7 +61,7 @@ _Docker-machine manages virtual machines. In this case we're just creating a sim
 ```bash
 docker-machine ip dev
 ```
-**The IP address that's returned is the local address of the machine. It will almost definitely be** `192.168.99.100`.
+**The IP address that's returned is the local address of the machine. It will probably be** `192.168.99.100`.
 
 ### 4. Move to the VM's environment
 ```bash
@@ -71,23 +71,22 @@ eval "$(docker-machine env dev)"
 **What's happening:**
 _We're telling dockertoolbox that when we issue a docker-specific command (like_ `docker foo` or `docker-compose bar`_), we actually want that instruction redirected to the docker-machine environment._
 
-### 5. Pull in the submodule projects
+### 5. Add the submodules
 ```bash
-git clone --recursive https://github.com/matthew-styers.git swaco-data-server
+git submodule init && git submodule update
 ```
 
 **What's happening:**
-_We're making a trackable copy of the source code on our local (host) machine. This source code also includes the instructions docker needs to build our container._
+_We're initializing the default submodules referenced in the project and pulling in their code. Use_ `git submodule --help` _to get more info on submodules, add your own, and/or remove the defaults._
 
 ### 6. Get/create environment variables
-- If you have access to the necessary `.env` file, move it into the project root (the folder you just cloned from github).
-- If you don't have access, simply rename the file in the project root called 'env-sample' to '.env'
+Move the .env file for each submodule to the root directory for that submodule.
 
 ### 7. Build your Docker container
-- `cd swaco-data-server` to get into the folder with the source code, then,
 ```bash
-docker-compose up api
+docker-compose up
 ```
+
  **What's Happening now**
 _Docker is building a container (a light-weight, self-contained 'ecosystem' where our code lives) inside our VM. It's basically mimicking the production environment, so that when the code gets pushed up to its 'live' home, we don't have to worry about whether or not it will work. It's also creating a 'volume' (shared folder) for the source code, so we can edit the code on our computer and then see those changes in real time without having to rebuild the container._
 
@@ -95,10 +94,10 @@ Once the entire script finishes running, you should see something along the line
 ```bash
 ------------------------------------------------
 KeystoneJS Started:
-swaco-data-server is ready on port 5000
+[YOUR PROJECT NAME] is ready on port [YOUR PORT]
 ------------------------------------------------
 ```
-at the end of your output. Point your browser to the IP you received in step 4, and you should see a working copy of styers.co in your browser.
+at the end of your output. The IP you received in step 4 is now running your source code.
 
 ## Tips
 - use `ctrl + c` to kill your container, and `docker-compose up` to restart it.
